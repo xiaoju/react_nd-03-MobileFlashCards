@@ -1,23 +1,39 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import { StackNavigator } from 'react-navigation'
+import DecksList from './components/DecksList'
+import DeckView from './components/DeckView'
+import NewDeck from './components/NewDeck'
+import Quiz from './components/Quiz'
+import Answer from './components/Answer'
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
+const App = StackNavigator({
+  DecksList: {
+    screen: DecksList,
+  },
+  DeckView: {
+    screen: DeckView,
+  },
+  NewDeck: {
+    screen: NewDeck,
+  },
+  Quiz: {
+    screen: Quiz,
+  },
+  Answer: {
+    screen: Answer,
   }
-}
+})
+
+export default App
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  bigblue: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 50,
   },
-});
+  red: {
+    color: 'red',
+  },
+})
