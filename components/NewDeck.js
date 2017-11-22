@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text, Button } from 'react-native'
 import { secondaryColor, secondaryTextColor} from '../utils/colors'
 import saveDeckTitle from '../utils/api'
+import dummyFunction from '../utils/api'
 
 // import { AsyncStorage } from 'react-native'
 // export const DECKS_STORAGE_KEY = 'MobileFlashCard:allDecks'
@@ -14,7 +15,7 @@ export default class NewDeck extends Component {
         <Text style={[styles.bigblue]}>Title for new deck:</Text>
         <Button
           onPress={ () =>
-            saveDeckTitle("dummyDeckTitle")
+            dummyFunction('dummyDeckTitle')
           }
 
           // onPress = { () =>

@@ -18,17 +18,18 @@ export function getDeck (deckId) {
   .then( res => res[deckId] )
 }
 
-export const saveDeckTitle = () => console.log('deckTitle')
-// export const saveDeckTitle = (deckTitle) =>
+export const dummyFunction = () => console.log('deckTitle')
+
+export const saveDeckTitle = (deckTitle) =>
   // take in a single title argument and add it to the decks.
-  // AsyncStorage.mergeItem(
-  //   DECKS_STORAGE_KEY,
-  //   JSON.stringify({
-  //     [deckTitle]: {
-  //       title: deckTitle,
-  //       questions: []
-  //     }
-  // }))
+  AsyncStorage.mergeItem(
+    DECKS_STORAGE_KEY,
+    JSON.stringify({
+      [deckTitle]: {
+        title: deckTitle,
+        questions: []
+      }
+  }))
 
 // export function saveDeckTitle(deckTitle) {
 //   // take in a single title argument and add it to the decks.
