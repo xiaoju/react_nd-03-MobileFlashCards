@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Button } from 'react-native'
 import { secondaryColor, secondaryTextColor} from '../utils/colors'
-import dummyFunction from '../utils/api'
+import { dummyFunction } from '../utils/api'
 
 export default class NewDeck extends Component {
 
