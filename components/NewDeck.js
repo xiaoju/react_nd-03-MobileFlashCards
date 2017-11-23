@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Button } from 'react-native'
 import { secondaryColor, secondaryTextColor} from '../utils/colors'
-import { dummyFunction } from '../utils/api'
+import { saveDeckTitle, getDecks } from '../utils/api'
 
 export default class NewDeck extends Component {
 
@@ -11,10 +11,19 @@ export default class NewDeck extends Component {
         <Text style={[styles.bigblue]}>Title for new deck:</Text>
         <Button
           onPress={ () =>
-            dummyFunction('dummyDeckTitle')
+            saveDeckTitle('dummyDeckTitle')
           }
           title='submit'
         />
+
+        <Button
+          // test if AsynStorage did work
+          onPress = { () => getDecks()
+            .then( (res) => console.log(res))
+          }
+          title='test'
+        />
+
 			</View>
 		)
 	}

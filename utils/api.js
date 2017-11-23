@@ -18,8 +18,6 @@ export function getDeck (deckId) {
   .then( res => res[deckId] )
 }
 
-export const dummyFunction = () => console.log('deckTitle')
-
 export const saveDeckTitle = (deckTitle) =>
   // take in a single title argument and add it to the decks.
   AsyncStorage.mergeItem(
