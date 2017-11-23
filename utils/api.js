@@ -31,20 +31,6 @@ export const saveDeckTitle = (deckTitle) =>
       }
   }))
 
-// export function saveDeckTitle(deckTitle) {
-//   // take in a single title argument and add it to the decks.
-//   return AsyncStorage.mergeItem(
-//     DECKS_STORAGE_KEY,
-//     JSON.stringify({
-//       [deckTitle]: {
-//         title: deckTitle,
-//         questions: []
-//       }
-//   }))
-//   // .then ( () => console.log('test'))
-//   // .then( () => saveTitleToState(deckTitle) )
-// }
-
 export function addCardToDeck(deckTitle, card) {
   // take in two arguments, title and card, and will add the card to the list of
   // questions for the deck with the associated title.

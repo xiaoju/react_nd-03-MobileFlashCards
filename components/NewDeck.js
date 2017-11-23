@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Button } from 'react-native'
 import { secondaryColor, secondaryTextColor} from '../utils/colors'
-import saveDeckTitle from '../utils/api'
 import dummyFunction from '../utils/api'
-
-// import { AsyncStorage } from 'react-native'
-// export const DECKS_STORAGE_KEY = 'MobileFlashCard:allDecks'
 
 export default class NewDeck extends Component {
 
@@ -17,30 +13,8 @@ export default class NewDeck extends Component {
           onPress={ () =>
             dummyFunction('dummyDeckTitle')
           }
-
-          // onPress = { () =>
-          //   AsyncStorage.mergeItem(
-          //     DECKS_STORAGE_KEY,
-          //     JSON.stringify({
-          //       'dummyDeck': {
-          //         title: 'dummyDeck',
-          //         questions: []
-          //       }
-          //   }))
-          // }
-
           title='submit'
         />
-        {/* <Button
-          // test if AsynStorage did work
-          onPress = { () => AsyncStorage.getItem(
-              DECKS_STORAGE_KEY,
-              res => JSON.parse(res)
-            )
-            .then( (res) => console.log(res))
-          }
-          title='test'
-        /> */}
 			</View>
 		)
 	}
