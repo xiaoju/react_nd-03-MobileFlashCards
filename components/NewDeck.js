@@ -7,7 +7,7 @@ export default class NewDeck extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {inputText: ''};
+    this.state = {inputText: ''}
   }
 
 	render(){
@@ -26,19 +26,12 @@ export default class NewDeck extends Component {
         <Button
           onPress={ () =>
             {
-              saveDeckTitle(this.state.inputText);
-              this.setState({inputText: ''});
+              saveDeckTitle(this.state.inputText)
+              .then ( newDeck => this.props.navigation.navigate('DeckView', {thisDeck: newDeck }))
+              .then (this.setState({inputText: ''}))
             }
           }
-          title='submit'
-        />
-
-        <Button
-          // test if AsynStorage did work
-          onPress = { () => getDecks()
-            .then( (res) => console.log(res))
-          }
-          title='test'
+          title='Create Deck'
         />
 
 			</View>

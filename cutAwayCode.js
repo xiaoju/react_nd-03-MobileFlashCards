@@ -17,15 +17,11 @@ onPress = { () =>
 
 <Button
   // test if AsynStorage did work
-  onPress = { () => AsyncStorage.getItem(
-      DECKS_STORAGE_KEY,
-      res => JSON.parse(res)
-    )
+  onPress = { () => getDecks()
     .then( (res) => console.log(res))
   }
   title='test'
 />
-
 
 // api.js
 

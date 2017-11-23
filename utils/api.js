@@ -28,6 +28,7 @@ export const saveDeckTitle = (deckTitle) =>
         questions: []
       }
   }))
+  .then( () => ({title: deckTitle, questions: []}) )
 
 export function addCardToDeck(deckTitle, card) {
   // take in two arguments, title and card, and will add the card to the list of
