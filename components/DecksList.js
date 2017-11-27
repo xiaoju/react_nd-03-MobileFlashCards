@@ -12,7 +12,6 @@ export default class DecksList extends Component {
 
 	constructor(props){
 		super(props)
-		// this.state = DummyDecks
     this.state =
     { currentDeck: '',
       currentQuestion: 0,
@@ -29,19 +28,22 @@ export default class DecksList extends Component {
     .then ( () => console.log(this.state.allDecks))
   }
 
-	render(){
+  _renderItem = ({item}) => (
+    <Text>
+      {item.key}
+    </Text>
+  )
 
-    alldecksArray = Object.keys(this.state.allDecks)
-    console.log('type of this.state.allDecks: ', typeof this.state.allDecks)
-    console.log('this.state.allDecks: ', this.state.allDecks)
+	render(){
 
 		return (
 
       <View>
 
-        <Text>
-          {alldecksArray[0]}
-        </Text>
+        <FlatList
+          data = {Object.keys(this.state.allDecks).map( title => this.state.allDecks[title] )}
+          renderItem={this._renderItem}
+        />
 
         <Button
           onPress={() => deleteAllDecks()}
