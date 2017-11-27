@@ -7,7 +7,7 @@ export default class DeckView extends Component {
 	render(){
 		return (
 			<View>
-        <Text style={[styles.bigblue]}>{this.props.navigation.state.params.thisDeck.title}</Text>
+        <Text style={[styles.bigblue]}>{this.props.navigation.state.params.thisDeck.key}</Text>
 				<Text style={[styles.bigblue]}>{this.props.navigation.state.params.thisDeck.questions.length} cards</Text>
         <Button
           onPress={() => this.props.navigation.navigate('Quiz')}

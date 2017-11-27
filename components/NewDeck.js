@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Button, TextInput } from 'react-native'
 import { secondaryColor, secondaryTextColor} from '../utils/colors'
-import { saveDeckTitle, getDecks } from '../utils/api'
+import { saveDeckTitle } from '../utils/api'
 
 export default class NewDeck extends Component {
 

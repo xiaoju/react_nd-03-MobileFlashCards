@@ -1,14 +1,12 @@
 import { AsyncStorage } from 'react-native'
 import DummyDecks from './DummyDecks'
+// import uuid from 'uuid/v4'
 
 export const DECKS_STORAGE_KEY = 'MobileFlashCard:allDecks'
 
 export function getDecks() {
-  // return all of the decks along with their titles, questions, and answers.
-  return AsyncStorage.getItem(
-    DECKS_STORAGE_KEY,
-    res => JSON.parse(res)
-  )
+  return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+  .then(res => {return JSON.parse(res)})
 }
 
 export function getDeck (deckId) {
@@ -18,17 +16,20 @@ export function getDeck (deckId) {
   .then( res => res[deckId] )
 }
 
+export const deleteAllDecks = () =>
+  AsyncStorage.setItem(DECKS_STORAGE_KEY, '{}')
+
 export const saveDeckTitle = (deckTitle) =>
-  // take in a single title argument and add it to the decks.
+  // take in a single title argument and add it to the decks.f
   AsyncStorage.mergeItem(
     DECKS_STORAGE_KEY,
     JSON.stringify({
       [deckTitle]: {
-        title: deckTitle,
+        key: deckTitle,
         questions: []
       }
   }))
-  .then( () => ({title: deckTitle, questions: []}) )
+  .then( () => ({key: deckTitle, questions: []}) )
 
 export function addCardToDeck(deckTitle, card) {
   // take in two arguments, title and card, and will add the card to the list of

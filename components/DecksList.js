@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Button } from 'react-native'
+import { StyleSheet, View, Text, Button, FlatList } from 'react-native'
 import { secondaryColor, secondaryTextColor} from '../utils/colors'
-// import DummyDecks from '../utils/DummyDecks'
+import { getDecks, deleteAllDecks } from '../utils/api'
 
 export default class DecksList extends Component {
 
@@ -18,49 +18,35 @@ export default class DecksList extends Component {
       currentQuestion: 0,
       correctCount: 0,
       incorrectCount: 0,
-      allDecks: {
-        React: {
-          title: 'React',
-          questions: [
-            {
-              question: 'What is React?',
-              answer: 'A library for managing user interfaces'
-            },
-            {
-              question: 'Where do you make Ajax requests in React?',
-              answer: 'The componentDidMount lifecycle event'
-            }
-          ]
-        },
-        JavaScript: {
-          title: 'JavaScript',
-          questions: [
-            {
-              question: 'What is a closure?',
-              answer: 'The combination of a function and the lexical environment within which that function was declared.'
-            }
-          ]
-        }
-      }
+      allDecks: {}
     }
+  }
 
+  componentDidMount() {
+    getDecks()
+    .then( allDecks => this.setState({allDecks: allDecks}))
+    .then( () => console.log((new Date(Date.now())).toLocaleString()) )
+    .then ( () => console.log(this.state.allDecks))
   }
 
 	render(){
+
+    alldecksArray = Object.keys(this.state.allDecks)
+    console.log('type of this.state.allDecks: ', typeof this.state.allDecks)
+    console.log('this.state.allDecks: ', this.state.allDecks)
+
 		return (
 
       <View>
 
-        {Object.keys(this.state.allDecks).map( deckId =>
-          <View key={deckId} >
-  					<Text style={[styles.bigblue]}>{this.state.allDecks[deckId].title}</Text>
-  					<Text style={[styles.bigblue]}>{this.state.allDecks[deckId].questions.length} cards</Text>
-            <Button
-              onPress={() => this.props.navigation.navigate('DeckView', {thisDeck: this.state.allDecks[deckId]})}
-              title="Go to this deck"
-            />
-  				</View>
-        )}
+        <Text>
+          {alldecksArray[0]}
+        </Text>
+
+        <Button
+          onPress={() => deleteAllDecks()}
+          title="Delete all decks!"
+        />
 
         <Button
           onPress={() => this.props.navigation.navigate('NewDeck')}
