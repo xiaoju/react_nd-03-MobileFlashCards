@@ -34,13 +34,7 @@ export default class DecksList extends Component {
 
         <FlatList
           data = {Object.keys(this.state.allDecks).map( title => this.state.allDecks[title] )}
-          renderItem = {
-            ({item}) =>
-              <DecksListItem
-                title = {item.key}
-                questionsCount = {item.questions.length}
-              />
-          }
+          renderItem = {({item}) => <DecksListItem thisDeck={item} navigation={this.props.navigation}/>}
         />
 
         <Button
