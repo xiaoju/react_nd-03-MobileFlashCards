@@ -11,6 +11,24 @@ allDecks: {
   renderItem={({item}) => <Text>{item.key}</Text>}
 />
 
+
+
+        <View style={styles.container}>
+          <Text style={styles.header}>Decks</Text>
+          <FlatList
+            data={this.state.decks}
+            renderItem={({item})=>
+              <DeckListItem
+                updateDeckListView={this.updateDeckListView}
+                navigation={this.props.navigation}
+                title={item.title}
+                noOfCards={item.questions?item.questions.length:0}
+              />
+            }
+          />
+          <Button color="darkorange" title="New Deck" onPress={()=>{this.props.navigation.navigate('NewDeckView',{updateDeckListView:this.updateDeckListView})}}/>
+        </View>
+
 <FlatList
   data = {[{key: 'CCC', questions: []}, {key: 'DDD', questions: []}]}
   renderItem={({item}) => <Text>{item.key}</Text>}

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text, Button, FlatList } from 'react-native'
 import { secondaryColor, secondaryTextColor} from '../utils/colors'
 import { getDecks, deleteAllDecks } from '../utils/api'
+import DecksListItem from './DecksListItem'
 
 export default class DecksList extends Component {
 
@@ -24,25 +25,22 @@ export default class DecksList extends Component {
   componentDidMount() {
     getDecks()
     .then( allDecks => this.setState({allDecks: allDecks}))
-    .then( () => console.log((new Date(Date.now())).toLocaleString()) )
-    .then ( () => console.log(this.state.allDecks))
   }
 
-  _renderItem = ({item}) => (
-    <Text>
-      {item.key}
-    </Text>
-  )
-
 	render(){
-
 		return (
 
       <View>
 
         <FlatList
           data = {Object.keys(this.state.allDecks).map( title => this.state.allDecks[title] )}
-          renderItem={this._renderItem}
+          renderItem = {
+            ({item}) =>
+              <DecksListItem
+                title = {item.key}
+                questionsCount = {item.questions.length}
+              />
+          }
         />
 
         <Button
