@@ -9,16 +9,27 @@ export default class Quiz extends Component {
     this.state = {
       thisDeck: this.props.navigation.state.params.thisDeck,
       questionNo: this.props.navigation.state.params.questionNo,
+      correctCount: this.props.navigation.state.params.correctCount,
     }
   }
 
 	render(){
 
-    // if questionNo === thisDeck.questions.length
-    // then show the score SubScreen.
-    // otherwise show quiz SubScreen
-
 		return (
+
+      this.state.questionNo > this.state.thisDeck.questions.length ?
+      <View>
+        <Text>Quiz is complete!</Text>
+        <Text>Your score:</Text>
+        <Text>{Math.round(this.state.correctCount / this.state.thisDeck.questions.length * 100)}%</Text>
+
+        <Button
+          onPress={() => this.props.navigation.navigate('DecksList')}
+          title='Back to decks list'
+        />
+
+      </View>
+      :
 			<View>
         <Text style={[styles.bigblue]}>{this.state.questionNo}/{this.state.thisDeck.questions.length}</Text>
         <Text style={[styles.bigblue]}>Question: </Text>
