@@ -14,7 +14,10 @@ export default class DeckView extends Component {
           title='Start quiz'
         />
         <Button
-          // onPress={}
+          onPress={() => this.props.navigation.navigate(
+            'AddQuestion',
+            {deckTitle: this.props.navigation.state.params.thisDeck.key}
+          )}
           title='Add question'
         />
 			</View>

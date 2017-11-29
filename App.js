@@ -6,23 +6,15 @@ import DeckView from './components/DeckView'
 import NewDeck from './components/NewDeck'
 import Quiz from './components/Quiz'
 import Answer from './components/Answer'
+import AddQuestion from './components/AddQuestion'
 
 const App = StackNavigator({
-  DecksList: {
-    screen: DecksList,
-  },
-  DeckView: {
-    screen: DeckView,
-  },
-  NewDeck: {
-    screen: NewDeck,
-  },
-  Quiz: {
-    screen: Quiz,
-  },
-  Answer: {
-    screen: Answer,
-  }
+  DecksList: {screen: DecksList},
+  DeckView: {screen: DeckView},
+  NewDeck: {screen: NewDeck},
+  Quiz: {screen: Quiz},
+  Answer: {screen: Answer},
+  AddQuestion: {screen: AddQuestion}
 })
 
 export default App
