@@ -15,7 +15,14 @@ export default class DeckView extends Component {
         <Text style={[styles.bigblue]}>{this.state.thisDeck.key}</Text>
 				<Text style={[styles.bigblue]}>{this.state.thisDeck.questions.length} cards</Text>
         <Button
-          onPress={() => this.props.navigation.navigate('Quiz')}
+          onPress={() => this.props.navigation.navigate(
+            'Quiz',
+            {
+              thisDeck: this.state.thisDeck,
+              questionNo: 1,
+              correctCount: 0,
+            }
+          )}
           title='Start quiz'
         />
         <Button
