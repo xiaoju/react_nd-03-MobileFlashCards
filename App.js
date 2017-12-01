@@ -8,7 +8,7 @@ import Quiz from './components/Quiz'
 import Answer from './components/Answer'
 import AddQuestion from './components/AddQuestion'
 
-const App = StackNavigator({
+const MainNavigator = StackNavigator({
   DecksList: {screen: DecksList},
   DeckView: {screen: DeckView},
   NewDeck: {screen: NewDeck},
@@ -17,7 +17,16 @@ const App = StackNavigator({
   AddQuestion: {screen: AddQuestion}
 })
 
-export default App
+export default class App extends React.Component {
+
+  render() {
+    return (
+        <View style={{flex: 1}}>
+          <MainNavigator />
+        </View>
+    )
+  }
+}
 
 const styles = StyleSheet.create({
   bigblue: {
