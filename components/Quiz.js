@@ -15,52 +15,58 @@ export default class Quiz extends Component {
 
 	render(){
 
-		return (
-
-      this.state.questionNo > this.state.thisDeck.questions.length ?
+		return (      
       <View>
-        <Text>Quiz is complete!</Text>
-        <Text>Your score:</Text>
-        <Text>{Math.round(this.state.correctCount / this.state.thisDeck.questions.length * 100)}%</Text>
+        {
+          this.state.questionNo > this.state.thisDeck.questions.length ?
+          <View>
+            <Text>Quiz is complete!</Text>
+            <Text>Your score:</Text>
+            <Text>{Math.round(this.state.correctCount / this.state.thisDeck.questions.length * 100)}%</Text>
 
-        <Button
-          onPress={() => this.props.navigation.navigate('DecksList')}
-          title='Back to decks list'
-        />
+            <Button
+              onPress={() => this.props.navigation.navigate('DecksList')}
+              title='Back to decks list'
+            />
 
+          </View>
+          :
+    			<View>
+            <Text style={[styles.bigblue]}>{this.state.questionNo}/{this.state.thisDeck.questions.length}</Text>
+            <Text style={[styles.bigblue]}>Question: </Text>
+            <Text>{this.state.thisDeck.questions[this.state.questionNo - 1].question}</Text>
+            <Button
+              onPress={() => this.props.navigation.navigate(
+                'Answer',
+                {
+                  thisDeck: this.state.thisDeck,
+                  questionNo: this.state.questionNo,
+                  correctCount: this.state.correctCount,
+                }
+              )}
+              title='View answer'
+            />
+          </View>
+        }
+
+        <View>
+          <Button
+            onPress={() => this.props.navigation.navigate(
+              'Quiz',
+              {
+                thisDeck: this.state.thisDeck,
+                questionNo: 1,
+                correctCount: 0,
+              }
+            )}
+            title='Restart quiz'
+          />
+          <Button
+            onPress={() => this.props.navigation.navigate('DeckView',{thisDeck: this.state.thisDeck})}
+            title='Back to Deck'
+          />
+  			</View>
       </View>
-      :
-			<View>
-        <Text style={[styles.bigblue]}>{this.state.questionNo}/{this.state.thisDeck.questions.length}</Text>
-        <Text style={[styles.bigblue]}>Question: </Text>
-        <Text>{this.state.thisDeck.questions[this.state.questionNo - 1].question}</Text>
-        <Button
-          onPress={() => this.props.navigation.navigate(
-            'Answer',
-            {
-              thisDeck: this.state.thisDeck,
-              questionNo: this.state.questionNo,
-              correctCount: this.state.correctCount,
-            }
-          )}
-          title='View answer'
-        />
-        <Button
-          onPress={() => this.props.navigation.navigate(
-            'Quiz',
-            {
-              thisDeck: this.state.thisDeck,
-              questionNo: 1,
-              correctCount: 0,
-            }
-          )}
-          title='Restart quiz'
-        />
-        <Button
-          onPress={() => this.props.navigation.navigate('DeckView',{thisDeck: this.state.thisDeck})}
-          title='Back to Deck'
-        />
-			</View>
 		)
 	}
 }
