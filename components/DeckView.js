@@ -19,6 +19,7 @@ export default class DeckView extends Component {
             'Quiz',
             {
               thisDeck: this.state.thisDeck,
+              naviKey: this.props.navigation.state.key,
               questionNo: 1,
               correctCount: 0,
             }

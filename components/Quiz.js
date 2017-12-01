@@ -8,8 +8,9 @@ export default class Quiz extends Component {
     super(props);
     this.state = {
       thisDeck: this.props.navigation.state.params.thisDeck,
+      naviKey: this.props.navigation.state.params.naviKey,
       questionNo: this.props.navigation.state.params.questionNo,
-      correctCount: this.props.navigation.state.params.correctCount,
+      correctCount: this.props.navigation.state.params.correctCount
     }
   }
 
@@ -22,33 +23,32 @@ export default class Quiz extends Component {
         <Text>Quiz is complete!</Text>
         <Text>Your score:</Text>
         <Text>{Math.round(this.state.correctCount / this.state.thisDeck.questions.length * 100)}%</Text>
-
         <Button
-          onPress={() => this.props.navigation.navigate('DecksList')}
-          title='Back to decks list'
+          // onPress={() => this.props.navigation.navigate('Answer')}
+          // on press: reset score, currentQuestion, correctCount and incorrectCount
+          title='Restart quiz'
+        />
+        <Button
+          onPress={() => this.props.navigation.goBack(this.state.naviKey)}
+          title='Back to individual Deck View'
         />
 
       </View>
       :
 			<View>
-        <Text style={[styles.bigblue]}>{this.state.questionNo}/{this.state.thisDeck.questions.length}</Text>
-        <Text style={[styles.bigblue]}>Question: </Text>
+        <Text style={[styles.bigblue]}>Question {this.state.questionNo}/{this.state.thisDeck.questions.length} : </Text>
         <Text>{this.state.thisDeck.questions[this.state.questionNo - 1].question}</Text>
         <Button
           onPress={() => this.props.navigation.navigate(
             'Answer',
             {
               thisDeck: this.state.thisDeck,
+              naviKey: this.state.naviKey,
               questionNo: this.state.questionNo,
               correctCount: this.state.correctCount,
             }
           )}
           title='View answer'
-        />
-        <Button
-          // onPress={() => this.props.navigation.navigate('Answer')}
-          // on press: reset score, currentQuestion, correctCount and incorrectCount
-          title='Restart quiz'
         />
         <Button
           onPress={() => this.props.navigation.navigate('DecksList')}

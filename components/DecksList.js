@@ -14,10 +14,11 @@ export default class DecksList extends Component {
 	constructor(props){
 		super(props)
     this.state =
-    { currentDeck: '',
-      currentQuestion: 0,
-      correctCount: 0,
-      incorrectCount: 0,
+    {
+      // currentDeck: '',
+      // currentQuestion: 0,
+      // correctCount: 0,
+      // incorrectCount: 0,
       allDecks: {}
     }
   }

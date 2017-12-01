@@ -8,6 +8,7 @@ export default class Answer extends Component {
     super(props);
     this.state = {
       thisDeck: this.props.navigation.state.params.thisDeck,
+      naviKey: this.props.navigation.state.params.naviKey,
       questionNo: this.props.navigation.state.params.questionNo,
       correctCount: this.props.navigation.state.params.correctCount
     }
@@ -16,8 +17,6 @@ export default class Answer extends Component {
 	render(){
 		return (
 			<View>
-        <Text style={[styles.bigblue]}>Question:</Text>
-        <Text>{this.state.thisDeck.questions[this.state.questionNo -1].question}</Text>
         <Text style={[styles.bigblue]}>Answer:</Text>
         <Text>{this.state.thisDeck.questions[this.state.questionNo -1].answer}</Text>
         <Button
@@ -25,6 +24,7 @@ export default class Answer extends Component {
             'Quiz',
             {
               thisDeck: this.state.thisDeck,
+              naviKey: this.state.naviKey,
               questionNo: this.state.questionNo + 1,
               correctCount: this.state.correctCount + 1,
             }
@@ -36,6 +36,7 @@ export default class Answer extends Component {
             'Quiz',
             {
               thisDeck: this.state.thisDeck,
+              naviKey: this.state.naviKey,
               questionNo: this.state.questionNo + 1,
               correctCount: this.state.correctCount,
             }
@@ -57,11 +58,3 @@ const styles = StyleSheet.create({
     color: 'red',
   },
 })
-
-// card question
-// button 'view answer'
-// button "Correct"
-// button "Incorrect"
-
-// number of cards left in the quiz
-// percentage correct once the quiz is complete
