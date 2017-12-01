@@ -46,8 +46,14 @@ export default class Quiz extends Component {
           title='View answer'
         />
         <Button
-          // onPress={() => this.props.navigation.navigate('Answer')}
-          // on press: reset score, currentQuestion, correctCount and incorrectCount
+          onPress={() => this.props.navigation.navigate(
+            'Quiz',
+            {
+              thisDeck: this.state.thisDeck,
+              questionNo: 1,
+              correctCount: 0,
+            }
+          )}
           title='Restart quiz'
         />
         <Button
