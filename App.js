@@ -7,6 +7,7 @@ import NewDeck from './components/NewDeck'
 import Quiz from './components/Quiz'
 import Answer from './components/Answer'
 import AddQuestion from './components/AddQuestion'
+import { setLocalNotification } from './utils/helpers'
 
 const MainNavigator = StackNavigator({
   DecksList: {screen: DecksList},
@@ -18,6 +19,10 @@ const MainNavigator = StackNavigator({
 })
 
 export default class App extends React.Component {
+
+  componentDidMount() {
+    setLocalNotification()
+  }
 
   render() {
     return (

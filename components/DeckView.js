@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Button } from 'react-native'
 import { secondaryColor, secondaryTextColor} from '../utils/colors'
+import {
+  clearLocalNotification,
+  setLocalNotification,
+} from '../utils/helpers.js'
 
 export default class DeckView extends Component {
 
@@ -15,14 +19,20 @@ export default class DeckView extends Component {
         <Text style={[styles.bigblue]}>{this.state.thisDeck.key}</Text>
 				<Text style={[styles.bigblue]}>{this.state.thisDeck.questions.length} cards</Text>
         <Button
-          onPress={() => this.props.navigation.navigate(
-            'Quiz',
-            {
-              thisDeck: this.state.thisDeck,
-              questionNo: 1,
-              correctCount: 0,
-            }
-          )}
+          onPress={() => 
+            clearLocalNotification()
+              .then(setLocalNotification)
+              .then(
+                this.props.navigation.navigate(
+                  'Quiz',
+                  {
+                    thisDeck: this.state.thisDeck,
+                    questionNo: 1,
+                    correctCount: 0,
+                  }
+                )
+              )
+          }
           title='Start quiz'
         />
         <Button
