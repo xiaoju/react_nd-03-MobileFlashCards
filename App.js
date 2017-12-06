@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { StackNavigator } from 'react-navigation'
 import DecksList from './components/DecksList'
 import DeckView from './components/DeckView'
@@ -26,20 +26,9 @@ export default class App extends React.Component {
 
   render() {
     return (
-        <View style={{flex: 1}}>
+        <View style={{flex: 1, backgroundColor: '#ff00ff'}}>
           <MainNavigator />
         </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  bigblue: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 50,
-  },
-  red: {
-    color: 'red',
-  },
-})

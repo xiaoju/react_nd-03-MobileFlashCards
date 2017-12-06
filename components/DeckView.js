@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Button } from 'react-native'
+import { View, Text, Button } from 'react-native'
 import { secondaryColor, secondaryTextColor} from '../utils/colors'
 import {
   clearLocalNotification,
   setLocalNotification,
 } from '../utils/helpers.js'
+import styled from 'styled-components/native'
+
+const ColoredBack = styled.View`
+  background-color: ${secondaryColor};
+`
 
 export default class DeckView extends Component {
 
@@ -15,11 +20,11 @@ export default class DeckView extends Component {
 
 	render(){
 		return (
-			<View>
-        <Text style={[styles.bigblue]}>{this.state.thisDeck.key}</Text>
-				<Text style={[styles.bigblue]}>{this.state.thisDeck.questions.length} cards</Text>
+			<ColoredBack>
+        <Text>{this.state.thisDeck.key}</Text>
+				<Text>{this.state.thisDeck.questions.length} cards</Text>
         <Button
-          onPress={() => 
+          onPress={() =>
             clearLocalNotification()
               .then(setLocalNotification)
               .then(
@@ -42,18 +47,7 @@ export default class DeckView extends Component {
           )}
           title='Add question'
         />
-			</View>
+			</ColoredBack>
 		)
 	}
 }
-
-const styles = StyleSheet.create({
-  bigblue: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 50,
-  },
-  red: {
-    color: 'red',
-  },
-})
