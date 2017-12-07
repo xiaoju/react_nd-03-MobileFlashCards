@@ -11,6 +11,18 @@ import {
 	secondaryTextColor,
 } from '../utils/colors'
 import { addCardToDeck } from '../utils/api'
+import styled from 'styled-components/native'
+import { FontAwesome } from '@expo/vector-icons'
+
+const SiconContainer = styled.TouchableHighlight`
+	background-color: ${secondaryDarkColor};
+	margin: 3px;
+	padding: 5px;
+	border-radius: 8px;
+	width: 50px;
+	height: 50px;
+	margin-right: 20px;
+`
 
 export default class NewDeck extends Component {
 
@@ -28,7 +40,7 @@ export default class NewDeck extends Component {
 			<KeyboardAvoidingView
         style={[styles.background]}
         >
-          
+
         <Text style={[styles.text]}>Type question and answer:</Text>
 
         <TextInput
@@ -54,17 +66,23 @@ export default class NewDeck extends Component {
           margin= {20}
           border-radius= {8}
           behavior="padding">
-            <Button
-              onPress={ () =>
-                {
-                  addCardToDeck(this.props.navigation.state.params.deckTitle,{question: this.state.question, answer: this.state.answer})
-                  alert('Question added!')
-                  this.props.navigation.goBack(null)
+
+            <SiconContainer>
+    					<FontAwesome
+    					  name='check'
+                onPress={ () =>
+                  {
+                    addCardToDeck(this.props.navigation.state.params.deckTitle,{question: this.state.question, answer: this.state.answer})
+                    alert('Question added!')
+                    this.props.navigation.goBack(null)
+                  }
                 }
-              }
-              title="Submit"
-              accessibilityLabel="Create a new deck of flashcards"
-            />
+    					  color={secondaryTextColor}
+    						size={40}
+                accessibilityLabel="Add this card to the deck"
+    					/>
+    				</SiconContainer>
+
         </View>
 
 			</KeyboardAvoidingView>
@@ -74,7 +92,8 @@ export default class NewDeck extends Component {
 
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: secondaryLightColor,
+    flex: 1,
+    backgroundColor: primaryColor,
   },
   text: {
     fontSize: 40,

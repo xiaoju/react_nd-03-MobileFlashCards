@@ -40,43 +40,42 @@ export default class Answer extends Component {
       <View
         style={[MyStyles.background]}
         >
-        <Text style={[MyStyles.text]}>Answer:</Text>
         <Text style={[MyStyles.text]}>{this.state.thisDeck.questions[this.state.questionNo -1].answer}</Text>
+        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
+          <SiconContainer>
+            <FontAwesome
+              name='thumbs-up'
+              onPress={() => this.props.navigation.navigate(
+                'Quiz',
+                {
+                  thisDeck: this.state.thisDeck,
+                  questionNo: this.state.questionNo + 1,
+                  correctCount: this.state.correctCount + 1,
+                }
+              )}
+              color={secondaryTextColor}
+              size={40}
+              accessibilityLabel='Correct (I was right)'
+            />
+          </SiconContainer>
 
-        <SiconContainer>
-          <FontAwesome
-            name='thumbs-up'
-            onPress={() => this.props.navigation.navigate(
-              'Quiz',
-              {
-                thisDeck: this.state.thisDeck,
-                questionNo: this.state.questionNo + 1,
-                correctCount: this.state.correctCount + 1,
-              }
-            )}
-            color={secondaryTextColor}
-            size={40}
-            accessibilityLabel='Correct (I was right)'
-          />
-        </SiconContainer>
-
-        <SiconContainer>
-          <FontAwesome
-            name='thumbs-down'
-            onPress={() => this.props.navigation.navigate(
-              'Quiz',
-              {
-                thisDeck: this.state.thisDeck,
-                questionNo: this.state.questionNo + 1,
-                correctCount: this.state.correctCount,
-              }
-            )}
-            color={secondaryTextColor}
-            size={40}
-            accessibilityLabel='Incorrect (I was wrong)'
-          />
-        </SiconContainer>
-
+          <SiconContainer>
+            <FontAwesome
+              name='thumbs-down'
+              onPress={() => this.props.navigation.navigate(
+                'Quiz',
+                {
+                  thisDeck: this.state.thisDeck,
+                  questionNo: this.state.questionNo + 1,
+                  correctCount: this.state.correctCount,
+                }
+              )}
+              color={secondaryTextColor}
+              size={40}
+              accessibilityLabel='Incorrect (I was wrong)'
+            />
+          </SiconContainer>
+        </View>
 			</View>
 		)
 	}

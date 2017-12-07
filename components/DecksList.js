@@ -21,7 +21,7 @@ const SView = styled.View`
 `
 
 const SBackground = styled.View`
-  background-color: ${secondaryLightColor};
+  background-color: ${primaryColor};
 `
 
 const SFlatList = styled.View`

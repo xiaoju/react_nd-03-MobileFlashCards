@@ -13,11 +13,16 @@ import {
 
 export const MyStyles = StyleSheet.create({
   background: {
-    backgroundColor: secondaryLightColor,
+    backgroundColor: primaryColor,
+    flex: 1,
   },
   text: {
     fontSize: 40,
     fontWeight: 'bold',
+    color: secondaryTextColor,
+  },
+  smallText: {
+    fontSize: 20,
     color: secondaryTextColor,
   },
   button: {

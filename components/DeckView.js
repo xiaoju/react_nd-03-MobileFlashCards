@@ -18,7 +18,7 @@ import styled from 'styled-components/native'
 import { FontAwesome } from '@expo/vector-icons'
 
 const ColoredBack = styled.View`
-  background-color: ${secondaryLightColor};
+  background-color: ${primaryColor};
 `
 
 const SiconContainer = styled.TouchableHighlight`
@@ -40,14 +40,16 @@ export default class DeckView extends Component {
 
 	render(){
 		return (
-			<ColoredBack>
-        <Text
-          style={{fontSize: 40, fontWeight: 'bold'}}
-          >{this.state.thisDeck.key}</Text>
-				<Text
-          style={{fontSize: 30}}
-          >{this.state.thisDeck.questions.length} cards</Text>
-        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+			<ColoredBack style={{flex: 1}}>
+        <View>
+          <Text
+            style={{fontSize: 40, fontWeight: 'bold'}}
+            >{this.state.thisDeck.key}</Text>
+  				<Text
+            style={{fontSize: 30}}
+            >{this.state.thisDeck.questions.length} cards</Text>
+        </View>
+        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
           <SiconContainer>
   					<FontAwesome
   					  name='flag'

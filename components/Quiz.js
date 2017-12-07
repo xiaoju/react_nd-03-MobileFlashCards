@@ -51,9 +51,7 @@ export default class Quiz extends Component {
           </View>
           :
     			<View>
-            <Text style={[MyStyles.text]}>{this.state.questionNo}/{this.state.thisDeck.questions.length}</Text>
-
-            <Text style={[MyStyles.text]}>Question: </Text>
+            <Text style={[MyStyles.smallText]}>{this.state.questionNo}/{this.state.thisDeck.questions.length}</Text>
 
             <Text style={[MyStyles.text]}>{this.state.thisDeck.questions[this.state.questionNo - 1].question}</Text>
 
@@ -76,7 +74,7 @@ export default class Quiz extends Component {
           </View>
         }
 
-        <View>
+        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
 
           <SiconContainer>
             <FontAwesome
