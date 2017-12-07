@@ -46,35 +46,32 @@ export default class Quiz extends Component {
           <View>
             <Text style={[MyStyles.text]}>Quiz is complete!</Text>
             <Text style={[MyStyles.text]}>Your score:</Text>
-            <Text style={[MyStyles.text]}>{Math.round(this.state.correctCount / this.state.thisDeck.questions.length * 100)}%</Text>
 
+            
+
+
+            <Text style={[MyStyles.text]}>
+              {Math.round(this.state.correctCount / this.state.thisDeck.questions.length * 100)}%
+            </Text>
           </View>
           :
     			<View>
             <Text style={[MyStyles.smallText]}>{this.state.questionNo}/{this.state.thisDeck.questions.length}</Text>
-
             <Text style={[MyStyles.text]}>{this.state.thisDeck.questions[this.state.questionNo - 1].question}</Text>
-
-            <SiconContainer>
-    					<FontAwesome
-    					  name='arrow-right'
-                onPress={() => this.props.navigation.navigate(
-                  'Answer',
-                  {
-                    thisDeck: this.state.thisDeck,
-                    questionNo: this.state.questionNo,
-                    correctCount: this.state.correctCount,
-                  }
-                )}
-    					  color={secondaryTextColor}
-    						size={40}
-                accessibilityLabel='Next: view answer'
-    					/>
-    				</SiconContainer>
           </View>
         }
 
         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
+
+          <SiconContainer>
+            <FontAwesome
+              name='home'
+              onPress={() => this.props.navigation.navigate('DeckView',{thisDeck: this.state.thisDeck})}
+              color={secondaryTextColor}
+              size={40}
+              accessibilityLabel='Return to individual deck view'
+            />
+          </SiconContainer>
 
           <SiconContainer>
             <FontAwesome
@@ -95,11 +92,18 @@ export default class Quiz extends Component {
 
           <SiconContainer>
             <FontAwesome
-              name='home'
-              onPress={() => this.props.navigation.navigate('DeckView',{thisDeck: this.state.thisDeck})}
+              name='arrow-right'
+              onPress={() => this.props.navigation.navigate(
+                'Answer',
+                {
+                  thisDeck: this.state.thisDeck,
+                  questionNo: this.state.questionNo,
+                  correctCount: this.state.correctCount,
+                }
+              )}
               color={secondaryTextColor}
               size={40}
-              accessibilityLabel='Return to individual deck view'
+              accessibilityLabel='Next: view answer'
             />
           </SiconContainer>
 

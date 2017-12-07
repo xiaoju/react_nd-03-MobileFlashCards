@@ -50,6 +50,30 @@ export default class DeckView extends Component {
             >{this.state.thisDeck.questions.length} cards</Text>
         </View>
         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
+
+          <SiconContainer>
+            <FontAwesome
+              name='home'
+              onPress={() => this.props.navigation.navigate('DecksList')}
+              color={secondaryTextColor}
+              size={40}
+              accessibilityLabel="Return to decks list view"
+            />
+          </SiconContainer>
+
+  				<SiconContainer>
+  					<FontAwesome
+  					  name='plus'
+              onPress={() => this.props.navigation.navigate(
+                'AddQuestion',
+                {deckTitle: this.state.thisDeck.key}
+              )}
+  					  color={secondaryTextColor}
+  						size={40}
+              accessibilityLabel="Add a question"
+  					/>
+  				</SiconContainer>
+
           <SiconContainer>
   					<FontAwesome
   					  name='flag'
@@ -73,28 +97,6 @@ export default class DeckView extends Component {
   					/>
   				</SiconContainer>
 
-  				<SiconContainer>
-  					<FontAwesome
-  					  name='plus'
-              onPress={() => this.props.navigation.navigate(
-                'AddQuestion',
-                {deckTitle: this.state.thisDeck.key}
-              )}
-  					  color={secondaryTextColor}
-  						size={40}
-              accessibilityLabel="Add a question"
-  					/>
-  				</SiconContainer>
-
-          <SiconContainer>
-            <FontAwesome
-              name='home'
-              onPress={() => this.props.navigation.navigate('DecksList')}
-              color={secondaryTextColor}
-              size={40}
-              accessibilityLabel="Return to decks list view"
-            />
-          </SiconContainer>
         </View>
 			</ColoredBack>
 		)
