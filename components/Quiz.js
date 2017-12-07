@@ -44,15 +44,17 @@ export default class Quiz extends Component {
         {
           this.state.questionNo > this.state.thisDeck.questions.length ?
           <View>
-            <Text style={[MyStyles.text]}>Quiz is complete!</Text>
-            <Text style={[MyStyles.text]}>Your score:</Text>
-
-            
-
-
-            <Text style={[MyStyles.text]}>
-              {Math.round(this.state.correctCount / this.state.thisDeck.questions.length * 100)}%
-            </Text>
+            {this.state.thisDeck.questions.length === 0
+              ? <Text style={[MyStyles.text]}>'You need to add cards before you can start the quiz!'</Text>
+              :
+                <View>
+                  <Text style={[MyStyles.text]}>Quiz is complete!</Text>
+                  <Text style={[MyStyles.text]}>Your score:</Text>
+                  <Text style={[MyStyles.text]}>
+                    {Math.round(this.state.correctCount / this.state.thisDeck.questions.length * 100)}%
+                  </Text>
+                </View>
+            }
           </View>
           :
     			<View>
