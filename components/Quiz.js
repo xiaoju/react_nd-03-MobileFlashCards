@@ -92,23 +92,24 @@ export default class Quiz extends Component {
             />
           </SiconContainer>
 
-          <SiconContainer>
-            <FontAwesome
-              name='arrow-right'
-              onPress={() => this.props.navigation.navigate(
-                'Answer',
-                {
-                  thisDeck: this.state.thisDeck,
-                  questionNo: this.state.questionNo,
-                  correctCount: this.state.correctCount,
-                }
-              )}
-              color={secondaryTextColor}
-              size={40}
-              accessibilityLabel='Next: view answer'
-            />
-          </SiconContainer>
-
+          { this.state.questionNo > this.state.thisDeck.questions.length ||
+            <SiconContainer>
+              <FontAwesome
+                name='arrow-right'
+                onPress={() => this.props.navigation.navigate(
+                  'Answer',
+                  {
+                    thisDeck: this.state.thisDeck,
+                    questionNo: this.state.questionNo,
+                    correctCount: this.state.correctCount,
+                  }
+                )}
+                color={secondaryTextColor}
+                size={40}
+                accessibilityLabel='Next: view answer'
+              />
+            </SiconContainer>
+          }
   			</View>
       </View>
 		)
