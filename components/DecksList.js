@@ -15,11 +15,6 @@ import {
 import styled from 'styled-components/native'
 import { FontAwesome } from '@expo/vector-icons'
 
-const SButton = styled.Button`
-  background-color: ${secondaryColor};
-  color: ${secondaryTextColor};
-`
-
 const SView = styled.View`
   background-color: ${secondaryDarkColor};
   color: ${secondaryTextColor};
@@ -71,23 +66,25 @@ export default class DecksList extends Component {
           renderItem = {({item}) => <DecksListItem thisDeck={item} navigation={this.props.navigation}/>}
         />
 
-				<SiconContainer>
-					<FontAwesome
-					  name='bomb'
-						onPress={() => deleteAllDecks()}
-					  color={secondaryTextColor}
-						size={40}
-					/>
-				</SiconContainer>
+				<View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+					<SiconContainer style={{position: 'absolute', bottom: 10, left: 10}}>
+						<FontAwesome
+						  name='bomb'
+							onPress={() => deleteAllDecks()}
+						  color={secondaryTextColor}
+							size={40}
+						/>
+					</SiconContainer>
 
-				<SiconContainer>
-					<FontAwesome
-					  name='plus'
-						onPress={() => this.props.navigation.navigate('NewDeck')}
-					  color={secondaryTextColor}
-						size={40}
-					/>
-				</SiconContainer>
+					<SiconContainer style={{position: 'absolute', bottom: 10, right: 10}}>
+						<FontAwesome
+						  name='plus'
+							onPress={() => this.props.navigation.navigate('NewDeck')}
+						  color={secondaryTextColor}
+							size={40}
+						/>
+					</SiconContainer>
+				</View>
 
       </SBackground>
 		)

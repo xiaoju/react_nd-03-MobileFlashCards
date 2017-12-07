@@ -1,8 +1,14 @@
 import React from 'react'
 import { TouchableHighlight, Text, View } from 'react-native'
 import {
-  secondaryColor,
-  secondaryTextColor,
+	primaryColor,
+	primaryLightColor,
+	primaryDarkColor,
+	secondaryColor,
+	secondaryLightColor,
+	secondaryDarkColor,
+	primaryTextColor,
+	secondaryTextColor,
 } from '../utils/colors'
 import styled from 'styled-components/native'
 
@@ -37,7 +43,13 @@ export default class DecksListItem extends React.Component {
 
           <View>
             <STitle>{this.state.thisDeck.key}</STitle>
-            <SLength>{this.state.thisDeck.questions.length} questions</SLength>
+            { this.state.thisDeck.questions.length === 0
+              ? <SLength>Empty deck</SLength>
+              :
+                this.state.thisDeck.questions.length === 1
+                ? <SLength>1 question</SLength>
+                : <SLength>{this.state.thisDeck.questions.length} questions</SLength>
+            }
           </View>
 
         </STouchableHighlight>

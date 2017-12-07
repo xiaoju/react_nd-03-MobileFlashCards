@@ -1,6 +1,28 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Button } from 'react-native'
-import { secondaryColor, secondaryTextColor} from '../utils/colors'
+import { View, Text, Button } from 'react-native'
+import { MyStyles } from '../utils/MyStyles'
+import styled from 'styled-components/native'
+import { FontAwesome } from '@expo/vector-icons'
+import {
+	primaryColor,
+	primaryLightColor,
+	primaryDarkColor,
+	secondaryColor,
+	secondaryLightColor,
+	secondaryDarkColor,
+	primaryTextColor,
+	secondaryTextColor,
+} from '../utils/colors'
+
+const SiconContainer = styled.TouchableHighlight`
+	background-color: ${secondaryDarkColor};
+	margin: 3px;
+	padding: 5px;
+	border-radius: 8px;
+	width: 50px;
+	height: 50px;
+	margin-right: 20px;
+`
 
 export default class Quiz extends Component {
 
@@ -15,77 +37,76 @@ export default class Quiz extends Component {
 
 	render(){
 
-		return (      
-      <View>
+		return (
+      <View
+        style={[MyStyles.background]}
+        >
         {
           this.state.questionNo > this.state.thisDeck.questions.length ?
           <View>
-            <Text>Quiz is complete!</Text>
-            <Text>Your score:</Text>
-            <Text>{Math.round(this.state.correctCount / this.state.thisDeck.questions.length * 100)}%</Text>
-
-            <Button
-              onPress={() => this.props.navigation.navigate('DecksList')}
-              title='Back to decks list'
-            />
+            <Text style={[MyStyles.text]}>Quiz is complete!</Text>
+            <Text style={[MyStyles.text]}>Your score:</Text>
+            <Text style={[MyStyles.text]}>{Math.round(this.state.correctCount / this.state.thisDeck.questions.length * 100)}%</Text>
 
           </View>
           :
     			<View>
-            <Text style={[styles.bigblue]}>{this.state.questionNo}/{this.state.thisDeck.questions.length}</Text>
-            <Text style={[styles.bigblue]}>Question: </Text>
-            <Text>{this.state.thisDeck.questions[this.state.questionNo - 1].question}</Text>
-            <Button
-              onPress={() => this.props.navigation.navigate(
-                'Answer',
-                {
-                  thisDeck: this.state.thisDeck,
-                  questionNo: this.state.questionNo,
-                  correctCount: this.state.correctCount,
-                }
-              )}
-              title='View answer'
-            />
+            <Text style={[MyStyles.text]}>{this.state.questionNo}/{this.state.thisDeck.questions.length}</Text>
+
+            <Text style={[MyStyles.text]}>Question: </Text>
+
+            <Text style={[MyStyles.text]}>{this.state.thisDeck.questions[this.state.questionNo - 1].question}</Text>
+
+            <SiconContainer>
+    					<FontAwesome
+    					  name='arrow-right'
+                onPress={() => this.props.navigation.navigate(
+                  'Answer',
+                  {
+                    thisDeck: this.state.thisDeck,
+                    questionNo: this.state.questionNo,
+                    correctCount: this.state.correctCount,
+                  }
+                )}
+    					  color={secondaryTextColor}
+    						size={40}
+                accessibilityLabel='Next: view answer'
+    					/>
+    				</SiconContainer>
           </View>
         }
 
         <View>
-          <Button
-            onPress={() => this.props.navigation.navigate(
-              'Quiz',
-              {
-                thisDeck: this.state.thisDeck,
-                questionNo: 1,
-                correctCount: 0,
-              }
-            )}
-            title='Restart quiz'
-          />
-          <Button
-            onPress={() => this.props.navigation.navigate('DeckView',{thisDeck: this.state.thisDeck})}
-            title='Back to Deck'
-          />
+
+          <SiconContainer>
+            <FontAwesome
+              name='refresh'
+              onPress={() => this.props.navigation.navigate(
+                'Quiz',
+                {
+                  thisDeck: this.state.thisDeck,
+                  questionNo: 1,
+                  correctCount: 0,
+                }
+              )}
+              color={secondaryTextColor}
+              size={40}
+              accessibilityLabel='Restart quiz'
+            />
+          </SiconContainer>
+
+          <SiconContainer>
+            <FontAwesome
+              name='home'
+              onPress={() => this.props.navigation.navigate('DeckView',{thisDeck: this.state.thisDeck})}
+              color={secondaryTextColor}
+              size={40}
+              accessibilityLabel='Return to individual deck view'
+            />
+          </SiconContainer>
+
   			</View>
       </View>
 		)
 	}
 }
-
-const styles = StyleSheet.create({
-  bigblue: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 50,
-  },
-  red: {
-    color: 'red',
-  },
-})
-
-// card question
-// button 'view answer'
-// button "Correct"
-// button "Incorrect"
-
-// number of cards left in the quiz
-// percentage correct once the quiz is complete

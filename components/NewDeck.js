@@ -1,7 +1,21 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Button, TextInput } from 'react-native'
-import { secondaryColor, secondaryTextColor} from '../utils/colors'
 import { saveDeckTitle } from '../utils/api'
+import {
+	primaryColor,
+	primaryLightColor,
+	primaryDarkColor,
+	secondaryColor,
+	secondaryLightColor,
+	secondaryDarkColor,
+	primaryTextColor,
+	secondaryTextColor,
+} from '../utils/colors'
+import styled from 'styled-components/native'
+
+const SView = styled.View`
+  background-color: ${secondaryLightColor};
+`
 
 export default class NewDeck extends Component {
 
@@ -12,40 +26,41 @@ export default class NewDeck extends Component {
 
 	render(){
 		return (
-			<View>
-        <Text style={[styles.bigblue]}>Title:</Text>
+			<SView>
+        <Text
+          style={{fontSize: 40, fontWeight: 'bold'}}
+          >Title:</Text>
 
         <TextInput
-          style = {{height: 50}}
-          placeholder = 'Type new deck title here'
+          style = {{fontSize: 30, height: 300}}
+          placeholder = 'Type here a title for your new deck'
           value = {this.state.inputText}
           multiline = {true}
           onChangeText = {(inputText) => this.setState({inputText})}
         />
 
-        <Button
-          onPress={ () =>
-            {
-              saveDeckTitle(this.state.inputText)
-              .then ( newDeck => this.props.navigation.navigate('DeckView', {thisDeck: newDeck }))
-              .then (this.setState({inputText: ''}))
-            }
-          }
-          title='Create Deck'
-        />
+        <View
+          backgroundColor={primaryColor}
+          width={200}
+          padding= {5}
+          margin= {20}
+          border-radius= {8}>
 
-			</View>
+            <Button
+                onPress={ () =>
+                  {
+                    this.state.inputText.length > 0 &&
+                    saveDeckTitle(this.state.inputText)
+                    .then ( newDeck => this.props.navigation.navigate('DeckView', {thisDeck: newDeck }))
+                    .then (this.setState({inputText: ''}))
+                  }
+                }
+
+              title="Submit"
+              accessibilityLabel="Create a new deck of flashcards"
+            />
+        </View>
+			</SView>
 		)
 	}
 }
-
-const styles = StyleSheet.create({
-  bigblue: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 50,
-  },
-  red: {
-    color: 'red',
-  },
-})
