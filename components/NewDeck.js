@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Button, TextInput } from 'react-native'
 import { saveDeckTitle } from '../utils/api'
+import { FontAwesome } from '@expo/vector-icons'
 import {
 	primaryColor,
 	primaryLightColor,
@@ -14,7 +15,18 @@ import {
 import styled from 'styled-components/native'
 
 const SView = styled.View`
-  background-color: ${secondaryLightColor};
+  background-color: ${secondaryLightColor}
+	flex: 1;
+	justify-content: space-between;
+`
+const SiconContainer = styled.TouchableHighlight`
+	background-color: ${secondaryDarkColor};
+	margin: 3px;
+	padding: 5px;
+	border-radius: 8px;
+	width: 50px;
+	height: 50px;
+	margin-right: 20px;
 `
 
 export default class NewDeck extends Component {
@@ -39,27 +51,23 @@ export default class NewDeck extends Component {
           onChangeText = {(inputText) => this.setState({inputText})}
         />
 
-        <View
-          backgroundColor={primaryColor}
-          width={200}
-          padding= {5}
-          margin= {20}
-          border-radius= {8}>
+				<SiconContainer style={{position: 'absolute', bottom: 10, right: 10}}>
+					<FontAwesome
+						name='check'
+						onPress={ () =>
+							{
+								this.state.inputText.length > 0 &&
+								saveDeckTitle(this.state.inputText)
+								.then ( newDeck => this.props.navigation.navigate('DeckView', {thisDeck: newDeck }))
+								.then (this.setState({inputText: ''}))
+							}
+						}
+						color={secondaryTextColor}
+						size={40}
+						accessibilityLabel="Submit title of new deck"
+					/>
+				</SiconContainer>
 
-            <Button
-                onPress={ () =>
-                  {
-                    this.state.inputText.length > 0 &&
-                    saveDeckTitle(this.state.inputText)
-                    .then ( newDeck => this.props.navigation.navigate('DeckView', {thisDeck: newDeck }))
-                    .then (this.setState({inputText: ''}))
-                  }
-                }
-
-              title="Submit"
-              accessibilityLabel="Create a new deck of flashcards"
-            />
-        </View>
 			</SView>
 		)
 	}
