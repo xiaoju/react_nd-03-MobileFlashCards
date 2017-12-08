@@ -1,35 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, Button } from 'react-native'
+import { View, Text, TouchableHighlight } from 'react-native'
 import {
   clearLocalNotification,
   setLocalNotification,
 } from '../utils/helpers.js'
-import {
-	primaryColor,
-	primaryLightColor,
-	primaryDarkColor,
-	secondaryColor,
-	secondaryLightColor,
-	secondaryDarkColor,
-	primaryTextColor,
-	secondaryTextColor,
-} from '../utils/colors'
-import styled from 'styled-components/native'
 import { FontAwesome } from '@expo/vector-icons'
-
-const ColoredBack = styled.View`
-  background-color: ${primaryColor};
-`
-
-const SiconContainer = styled.TouchableHighlight`
-	background-color: ${secondaryDarkColor};
-	margin: 3px;
-	padding: 5px;
-	border-radius: 8px;
-	width: 50px;
-	height: 50px;
-	margin-right: 20px;
-`
+import { MyStyles } from '../utils/MyStyles'
 
 export default class DeckView extends Component {
 
@@ -40,8 +16,8 @@ export default class DeckView extends Component {
 
 	render(){
 		return (
-			<ColoredBack style={{flex: 1}}>
-        <View>
+			<View style={[MyStyles.background]}>
+        <View style={[MyStyles.infoView]}>
           <Text
             style={{fontSize: 40, fontWeight: 'bold'}}
             >{this.state.thisDeck.key}</Text>
@@ -49,32 +25,31 @@ export default class DeckView extends Component {
             style={{fontSize: 30}}
             >{this.state.thisDeck.questions.length} cards</Text>
         </View>
-        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
 
-          <SiconContainer>
+        <View style={[MyStyles.iconsBar]}>
+
+          <TouchableHighlight style={[MyStyles.iconContainer]}>
             <FontAwesome
               name='home'
               onPress={() => this.props.navigation.navigate('DecksList')}
-              color={secondaryTextColor}
               size={40}
               accessibilityLabel="Return to decks list view"
             />
-          </SiconContainer>
+          </TouchableHighlight>
 
-  				<SiconContainer>
+  				<TouchableHighlight style={[MyStyles.iconContainer]}>
   					<FontAwesome
   					  name='plus'
               onPress={() => this.props.navigation.navigate(
                 'AddQuestion',
                 {deckTitle: this.state.thisDeck.key}
               )}
-  					  color={secondaryTextColor}
   						size={40}
               accessibilityLabel="Add a question"
   					/>
-  				</SiconContainer>
+  				</TouchableHighlight>
 
-          <SiconContainer>
+          <TouchableHighlight style={[MyStyles.iconContainer]}>
   					<FontAwesome
   					  name='flag'
               onPress={() =>
@@ -91,14 +66,13 @@ export default class DeckView extends Component {
                     )
                   )
               }
-  					  color={secondaryTextColor}
   						size={40}
               accessibilityLabel="Start quiz"
   					/>
-  				</SiconContainer>
+  				</TouchableHighlight>
 
         </View>
-			</ColoredBack>
+			</View>
 		)
 	}
 }
