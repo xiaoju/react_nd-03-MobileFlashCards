@@ -21,11 +21,11 @@ const SView = styled.View`
 `
 const SiconContainer = styled.TouchableHighlight`
 	background-color: ${secondaryDarkColor};
-	margin: 3px;
+	margin: 10px;
 	padding: 5px;
 	border-radius: 8px;
-	width: 50px;
-	height: 50px;
+	width: 60px;
+	height: 60px;
 	margin-right: 20px;
 `
 
@@ -51,7 +51,7 @@ export default class NewDeck extends Component {
           onChangeText = {(inputText) => this.setState({inputText})}
         />
 
-				<SiconContainer style={{position: 'absolute', bottom: 10, right: 10}}>
+				<SiconContainer>
 					<FontAwesome
 						name='check'
 						onPress={ () =>

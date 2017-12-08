@@ -38,6 +38,11 @@ export const MyStyles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
+		borderColor: secondaryColor,
+		borderWidth: 3,
+		borderStyle: 'solid',
+		padding: 20,
+		margin: 30,
 	},
 	warningText: {
 		fontSize: 30,
