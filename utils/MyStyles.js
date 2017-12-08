@@ -48,7 +48,7 @@ export const MyStyles = StyleSheet.create({
 	},
 	iconsBar: {
 		flex: 1,
-		flexDirection: 'row',
+		flexDirection: 'row-reverse',
 		justifyContent: 'space-between',
 		alignItems: 'flex-end',
 	},

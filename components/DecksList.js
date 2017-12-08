@@ -36,16 +36,15 @@ export default class DecksList extends Component {
 				<View style={[MyStyles.iconsBar]}>
 					<TouchableHighlight style={[MyStyles.iconContainer]}>
 						<FontAwesome
-						  name='bomb'
-							onPress={() => deleteAllDecks()}
+						  name='plus'
+							onPress={() => this.props.navigation.navigate('NewDeck')}
 							size={40}
 						/>
 					</TouchableHighlight>
-
 					<TouchableHighlight style={[MyStyles.iconContainer]}>
 						<FontAwesome
-						  name='plus'
-							onPress={() => this.props.navigation.navigate('NewDeck')}
+						  name='bomb'
+							onPress={() => deleteAllDecks()}
 							size={40}
 						/>
 					</TouchableHighlight>

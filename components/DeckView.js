@@ -29,27 +29,6 @@ export default class DeckView extends Component {
         <View style={[MyStyles.iconsBar]}>
 
           <TouchableHighlight style={[MyStyles.iconContainer]}>
-            <FontAwesome
-              name='home'
-              onPress={() => this.props.navigation.navigate('DecksList')}
-              size={40}
-              accessibilityLabel="Return to decks list view"
-            />
-          </TouchableHighlight>
-
-  				<TouchableHighlight style={[MyStyles.iconContainer]}>
-  					<FontAwesome
-  					  name='plus'
-              onPress={() => this.props.navigation.navigate(
-                'AddQuestion',
-                {deckTitle: this.state.thisDeck.key}
-              )}
-  						size={40}
-              accessibilityLabel="Add a question"
-  					/>
-  				</TouchableHighlight>
-
-          <TouchableHighlight style={[MyStyles.iconContainer]}>
   					<FontAwesome
   					  name='flag'
               onPress={() =>
@@ -70,6 +49,27 @@ export default class DeckView extends Component {
               accessibilityLabel="Start quiz"
   					/>
   				</TouchableHighlight>
+
+          <TouchableHighlight style={[MyStyles.iconContainer]}>
+  					<FontAwesome
+  					  name='plus'
+              onPress={() => this.props.navigation.navigate(
+                'AddQuestion',
+                {deckTitle: this.state.thisDeck.key}
+              )}
+  						size={40}
+              accessibilityLabel="Add a question"
+  					/>
+  				</TouchableHighlight>
+
+          <TouchableHighlight style={[MyStyles.iconContainer]}>
+            <FontAwesome
+              name='home'
+              onPress={() => this.props.navigation.navigate('DecksList')}
+              size={40}
+              accessibilityLabel="Return to decks list view"
+            />
+          </TouchableHighlight>
 
         </View>
 			</View>
