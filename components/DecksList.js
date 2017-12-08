@@ -1,53 +1,15 @@
 import React, { Component } from 'react'
-import { View, Text, Button, FlatList } from 'react-native'
+import { View, Text, Button, FlatList, TouchableHighlight } from 'react-native'
 import { getDecks, deleteAllDecks } from '../utils/api'
 import DecksListItem from './DecksListItem'
-import {
-	primaryColor,
-	primaryLightColor,
-	primaryDarkColor,
-	secondaryColor,
-	secondaryLightColor,
-	secondaryDarkColor,
-	primaryTextColor,
-	secondaryTextColor,
-} from '../utils/colors'
-import styled from 'styled-components/native'
 import { FontAwesome } from '@expo/vector-icons'
 import { MyStyles } from '../utils/MyStyles'
-
-const SView = styled.View`
-  background-color: ${secondaryDarkColor};
-  color: ${secondaryTextColor};
-`
-
-const SBackground = styled.View`
-  background-color: ${primaryColor};
-	flex: 1;
-`
-
-const SiconContainer = styled.TouchableHighlight`
-	background-color: ${primaryDarkColor};
-	justify-content: center;
-	align-items: center;
-	margin: 10px;
-	padding: 5px;
-	border-radius: 8px;
-	width: 60px;
-	height: 60px;
-`
 
 export default class DecksList extends Component {
 
 	constructor(props){
 		super(props)
-    this.state =
-    { currentDeck: '',
-      currentQuestion: 0,
-      correctCount: 0,
-      incorrectCount: 0,
-      allDecks: {}
-    }
+    this.state = { allDecks: {} }
   }
 
   componentDidMount() {
@@ -57,8 +19,7 @@ export default class DecksList extends Component {
 
 	render(){
 		return (
-
-      <SBackground>
+      <View style={[MyStyles.background]}>
 
 				{ Object.keys(this.state.allDecks).length === 0 &&
 					<View style={[MyStyles.infoView]}>
@@ -72,27 +33,25 @@ export default class DecksList extends Component {
           renderItem = {({item}) => <DecksListItem thisDeck={item} navigation={this.props.navigation}/>}
         />
 
-				<View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
-					<SiconContainer style={{position: 'absolute', bottom: 10, left: 10}}>
+				<View style={[MyStyles.iconsBar]}>
+					<TouchableHighlight style={[MyStyles.iconContainer]}>
 						<FontAwesome
 						  name='bomb'
 							onPress={() => deleteAllDecks()}
-						  color={secondaryTextColor}
 							size={40}
 						/>
-					</SiconContainer>
+					</TouchableHighlight>
 
-					<SiconContainer style={{position: 'absolute', bottom: 10, right: 10}}>
+					<TouchableHighlight style={[MyStyles.iconContainer]}>
 						<FontAwesome
 						  name='plus'
 							onPress={() => this.props.navigation.navigate('NewDeck')}
-						  color={secondaryTextColor}
 							size={40}
 						/>
-					</SiconContainer>
+					</TouchableHighlight>
 				</View>
 
-      </SBackground>
+      </View>
 		)
 	}
 }

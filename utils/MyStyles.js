@@ -38,9 +38,6 @@ export const MyStyles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		borderColor: secondaryColor,
-		borderWidth: 3,
-		borderStyle: 'solid',
 		padding: 20,
 		margin: 30,
 	},
@@ -49,4 +46,23 @@ export const MyStyles = StyleSheet.create({
 		fontWeight: 'bold',
 		color: primaryTextColor,
 	},
+	iconsBar: {
+		flex: 1,
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'flex-end',
+	},
+	iconContainer: {
+		backgroundColor: primaryDarkColor,
+		justifyContent: 'center',
+		alignItems: 'center',
+		margin: 10,
+		padding: 5,
+		borderRadius: 8,
+		width: 60,
+		height: 60,
+		borderColor: secondaryColor,
+		borderWidth: 3,
+		borderStyle: 'solid',
+	}
 })
