@@ -14,6 +14,7 @@ import {
 } from '../utils/colors'
 import styled from 'styled-components/native'
 import { FontAwesome } from '@expo/vector-icons'
+import { MyStyles } from '../utils/MyStyles'
 
 const SView = styled.View`
   background-color: ${secondaryDarkColor};
@@ -57,6 +58,13 @@ export default class DecksList extends Component {
 		return (
 
       <SBackground>
+
+				{ Object.keys(this.state.allDecks).length === 0 &&
+					<View style={[MyStyles.infoView]}>
+						<Text style={[MyStyles.warningText]}>Press the + button to create new decks.</Text>
+						<Text style={[MyStyles.warningText]}>BEWARE! The bomb button will DELETE ALL YOUR DECKS!</Text>
+					</View>
+				}
 
         <FlatList
           data = {Object.keys(this.state.allDecks).map( title => this.state.allDecks[title] )}

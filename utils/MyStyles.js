@@ -33,4 +33,15 @@ export const MyStyles = StyleSheet.create({
     height: 100,
     color: secondaryTextColor,
   },
+	infoView: {
+		backgroundColor: primaryDarkColor,
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	warningText: {
+		fontSize: 30,
+		fontWeight: 'bold',
+		color: primaryTextColor,
+	},
 })
