@@ -22,10 +22,7 @@ const SView = styled.View`
 
 const SBackground = styled.View`
   background-color: ${primaryColor};
-`
-
-const SFlatList = styled.View`
-  background-color: red;
+	flex: 1;
 `
 
 const SiconContainer = styled.TouchableHighlight`
