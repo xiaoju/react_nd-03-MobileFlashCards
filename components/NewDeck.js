@@ -1,33 +1,8 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Button, TextInput } from 'react-native'
+import { StyleSheet, View, Text, Button, TextInput, TouchableHighlight } from 'react-native'
 import { saveDeckTitle } from '../utils/api'
 import { FontAwesome } from '@expo/vector-icons'
-import {
-	primaryColor,
-	primaryLightColor,
-	primaryDarkColor,
-	secondaryColor,
-	secondaryLightColor,
-	secondaryDarkColor,
-	primaryTextColor,
-	secondaryTextColor,
-} from '../utils/colors'
-import styled from 'styled-components/native'
-
-const SView = styled.View`
-  background-color: ${secondaryLightColor}
-	flex: 1;
-	justify-content: space-between;
-`
-const SiconContainer = styled.TouchableHighlight`
-	background-color: ${secondaryDarkColor};
-	margin: 10px;
-	padding: 5px;
-	border-radius: 8px;
-	width: 60px;
-	height: 60px;
-	margin-right: 20px;
-`
+import { MyStyles } from '../utils/MyStyles'
 
 export default class NewDeck extends Component {
 
@@ -38,7 +13,7 @@ export default class NewDeck extends Component {
 
 	render(){
 		return (
-			<SView>
+			<View style={[MyStyles.background]}>
         <Text
           style={{fontSize: 40, fontWeight: 'bold'}}
           >Title:</Text>
@@ -51,7 +26,7 @@ export default class NewDeck extends Component {
           onChangeText = {(inputText) => this.setState({inputText})}
         />
 
-				<SiconContainer>
+				<TouchableHighlight style={[MyStyles.iconContainer]}>
 					<FontAwesome
 						name='check'
 						onPress={ () =>
@@ -62,13 +37,12 @@ export default class NewDeck extends Component {
 								.then (this.setState({inputText: ''}))
 							}
 						}
-						color={secondaryTextColor}
 						size={40}
 						accessibilityLabel="Submit title of new deck"
 					/>
-				</SiconContainer>
+				</TouchableHighlight>
 
-			</SView>
+			</View>
 		)
 	}
 }

@@ -13,9 +13,12 @@ import {
 import styled from 'styled-components/native'
 
 const STouchableHighlight = styled.TouchableHighlight`
-  background-color: ${secondaryColor};
+  background-color: ${primaryDarkColor};
   margin: 3px 7px;
-  border-radius: 8px;
+	border-radius: 8px;
+	border-color: ${secondaryColor};
+	border-width: 3px;
+	border-style: solid;
   padding: 5px;
 `
 
