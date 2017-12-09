@@ -6,7 +6,8 @@ export const DECKS_STORAGE_KEY = 'MobileFlashCard:allDecks'
 
 export function getDecks() {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY)
-  .then(res => {return JSON.parse(res)})
+  .then ( res => res ? JSON.parse(res) : {} )
+  // if app is used for first time, res is null
 }
 
 export function getDeck (deckId) {
