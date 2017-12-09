@@ -44,7 +44,9 @@ export default class DecksList extends Component {
 					<TouchableHighlight style={[MyStyles.iconContainer]}>
 						<FontAwesome
 						  name='bomb'
-							onPress={() => deleteAllDecks()}
+							onPress={() => deleteAllDecks()
+								.then(() => this.setState({allDecks: {}}))
+							}
 							size={40}
 						/>
 					</TouchableHighlight>
