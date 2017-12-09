@@ -21,11 +21,11 @@ export default class NewDeck extends Component {
 	render(){
 		return (
 			<KeyboardAvoidingView style={[MyStyles.background]}>
-        <Text style={[MyStyles.text]}>Input question and answer:</Text>
+        <Text style={[MyStyles.topInfo]}>Please input…</Text>
 
         <TextInput
           style = {[MyStyles.textInput]}
-          placeholder = 'A question...'
+          placeholder = '…a question…'
           value = {this.state.question}
           multiline = {true}
           onChangeText = {(question) => this.setState({question})}
@@ -33,7 +33,7 @@ export default class NewDeck extends Component {
 
         <TextInput
           style = {[MyStyles.textInput]}
-          placeholder = 'An answer...'
+          placeholder = '…and an answer!'
           value = {this.state.answer}
           multiline = {true}
           onChangeText = {(answer) => this.setState({answer})}
@@ -45,6 +45,8 @@ export default class NewDeck extends Component {
 						  name='check'
 							onPress={ () =>
 								{
+									this.state.question.length > 0 &&
+									this.state.answer.length > 0 &&
 									addCardToDeck(this.props.navigation.state.params.deckTitle,{question: this.state.question, answer: this.state.answer})
 									alert('Question added!')
 									this.props.navigation.goBack(null)

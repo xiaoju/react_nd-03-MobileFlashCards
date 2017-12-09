@@ -29,9 +29,15 @@ export const MyStyles = StyleSheet.create({
     color: 'red',
   },
   textInput: {
+		flex: 1,
     fontSize: 30,
-    height: 100,
     color: secondaryTextColor,
+		borderRadius: 8,
+		borderColor: secondaryColor,
+		borderWidth: 3,
+		borderStyle: 'solid',
+		margin: 10,
+		padding: 5,
   },
 	infoView: {
 		backgroundColor: primaryDarkColor,
@@ -40,6 +46,14 @@ export const MyStyles = StyleSheet.create({
 		alignItems: 'center',
 		padding: 20,
 		margin: 30,
+	},
+	topInfo: {
+		backgroundColor: primaryDarkColor,
+		color: primaryTextColor,
+		fontSize: 30,
+		fontWeight: 'bold',
+		padding: 10,
+		margin: 10,
 	},
 	warningText: {
 		fontSize: 30,
@@ -64,5 +78,5 @@ export const MyStyles = StyleSheet.create({
 		borderColor: secondaryColor,
 		borderWidth: 3,
 		borderStyle: 'solid',
-	}
+	},
 })

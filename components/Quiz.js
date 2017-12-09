@@ -22,7 +22,8 @@ export default class Quiz extends Component {
           ?
           <View style={[MyStyles.infoView]}>
             <Text style={[MyStyles.text]}>Add cards before starting the quiz!</Text>
-            <Text style={[MyStyles.smallText]}>See the double arrow icon below? It will be to restart tests.</Text>
+            <Text style={[MyStyles.smallText]}>For that, press the + button.</Text>
+            <Text style={[MyStyles.smallText]}>Also, you see the double arrow icon below? This will be to restart tests.</Text>
           </View>
           :
           <View style={[MyStyles.infoView]} >
@@ -73,6 +74,19 @@ export default class Quiz extends Component {
               accessibilityLabel='Restart quiz'
             />
           </TouchableHighlight>
+
+          { this.state.thisDeck.questions.length === 0 &&
+          <TouchableHighlight style={[MyStyles.iconContainer]}>
+            <FontAwesome
+              name='plus'
+              onPress={() => this.props.navigation.navigate(
+                'AddQuestion',
+                {deckTitle: this.state.thisDeck.key}
+              )}
+              size={40}
+              accessibilityLabel="Add a question"
+            />
+          </TouchableHighlight> }
 
           <TouchableHighlight style={[MyStyles.iconContainer]}>
             <FontAwesome
