@@ -26,7 +26,7 @@ export default class Quiz extends Component {
             <Text style={[MyStyles.smallText]}>Also, you see the double arrow icon below? This will be to restart tests.</Text>
           </View>
           :
-          <View style={[MyStyles.infoView]} >
+          <View style={[MyStyles.infoView]}>
             <Text style={[MyStyles.text]}>Quiz is complete!</Text>
             <Text style={[MyStyles.text]}>Your score:</Text>
             <Text style={[MyStyles.text]}>
@@ -34,7 +34,7 @@ export default class Quiz extends Component {
             </Text>
           </View>
           :
-    			<View>
+          <View style={[MyStyles.infoView]}>
             <Text style={[MyStyles.smallText]}>{this.state.questionNo}/{this.state.thisDeck.questions.length}</Text>
             <Text style={[MyStyles.text]}>{this.state.thisDeck.questions[this.state.questionNo - 1].question}</Text>
           </View>

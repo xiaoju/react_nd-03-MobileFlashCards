@@ -20,7 +20,7 @@ export default class NewDeck extends Component {
 
 	render(){
 		return (
-			<KeyboardAvoidingView style={[MyStyles.background]}>
+			<KeyboardAvoidingView behavior='padding' style={[MyStyles.background]}>
         <Text style={[MyStyles.topInfo]}>Please input…</Text>
 
         <TextInput

@@ -65,6 +65,7 @@ export const MyStyles = StyleSheet.create({
 		flexDirection: 'row-reverse',
 		justifyContent: 'space-between',
 		alignItems: 'flex-end',
+		marginBottom: 60,
 	},
 	iconContainer: {
 		backgroundColor: primaryDarkColor,
