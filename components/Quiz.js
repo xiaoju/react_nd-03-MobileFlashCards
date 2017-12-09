@@ -17,19 +17,20 @@ export default class Quiz extends Component {
 	render(){
 		return (
       <View style={[MyStyles.background]}>
-        { this.state.questionNo > this.state.thisDeck.questions.length ?
+        {this.state.questionNo > this.state.thisDeck.questions.length ?
+          this.state.thisDeck.questions.length === 0
+          ?
           <View style={[MyStyles.infoView]}>
-            {this.state.thisDeck.questions.length === 0
-              ? <Text style={[MyStyles.text]}>Add cards before starting the quiz!</Text>
-              :
-                <View style={[MyStyles.infoView]} >
-                  <Text style={[MyStyles.text]}>Quiz is complete!</Text>
-                  <Text style={[MyStyles.text]}>Your score:</Text>
-                  <Text style={[MyStyles.text]}>
-                    {Math.round(this.state.correctCount / this.state.thisDeck.questions.length * 100)}%
-                  </Text>
-                </View>
-            }
+            <Text style={[MyStyles.text]}>Add cards before starting the quiz!</Text>
+            <Text style={[MyStyles.smallText]}>See the double arrow icon below? It will be to restart tests.</Text>
+          </View>
+          :
+          <View style={[MyStyles.infoView]} >
+            <Text style={[MyStyles.text]}>Quiz is complete!</Text>
+            <Text style={[MyStyles.text]}>Your score:</Text>
+            <Text style={[MyStyles.text]}>
+              {Math.round(this.state.correctCount / this.state.thisDeck.questions.length * 100)}%
+            </Text>
           </View>
           :
     			<View>
@@ -39,31 +40,6 @@ export default class Quiz extends Component {
         }
 
         <View style={[MyStyles.iconsBar]}>
-          <TouchableHighlight style={[MyStyles.iconContainer]}>
-            <FontAwesome
-              name='home'
-              onPress={() => this.props.navigation.navigate('DeckView',{thisDeck: this.state.thisDeck})}
-              size={40}
-              accessibilityLabel='Return to individual deck view'
-            />
-          </TouchableHighlight>
-
-          <TouchableHighlight style={[MyStyles.iconContainer]}>
-            <FontAwesome
-              name='refresh'
-              onPress={() => this.props.navigation.navigate(
-                'Quiz',
-                {
-                  thisDeck: this.state.thisDeck,
-                  questionNo: 1,
-                  correctCount: 0,
-                }
-              )}
-              size={40}
-              accessibilityLabel='Restart quiz'
-            />
-          </TouchableHighlight>
-
           { this.state.questionNo > this.state.thisDeck.questions.length ||
             <TouchableHighlight style={[MyStyles.iconContainer]}>
               <FontAwesome
@@ -81,6 +57,32 @@ export default class Quiz extends Component {
               />
             </TouchableHighlight>
           }
+
+          <TouchableHighlight style={[MyStyles.iconContainer]}>
+            <FontAwesome
+              name='refresh'
+              onPress={() => this.props.navigation.navigate(
+                'Quiz',
+                {
+                  thisDeck: this.state.thisDeck,
+                  questionNo: 1,
+                  correctCount: 0,
+                }
+              )}
+              size={40}
+              accessibilityLabel='Restart quiz'
+            />
+          </TouchableHighlight>
+
+          <TouchableHighlight style={[MyStyles.iconContainer]}>
+            <FontAwesome
+              name='home'
+              onPress={() => this.props.navigation.navigate('DeckView',{thisDeck: this.state.thisDeck})}
+              size={40}
+              accessibilityLabel='Return to individual deck view'
+            />
+          </TouchableHighlight>
+
   			</View>
       </View>
 		)
