@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Button, TextInput, TouchableHighlight } from 'react-native'
+import {
+  View,
+  Text,
+  Button,
+  TextInput,
+  TouchableHighlight,
+  KeyboardAvoidingView,
+} from 'react-native'
 import { saveDeckTitle } from '../utils/api'
 import { FontAwesome } from '@expo/vector-icons'
 import { MyStyles } from '../utils/MyStyles'
 
 export default class NewDeck extends Component {
-
   constructor(props) {
     super(props);
     this.state = {inputText: ''}
@@ -13,7 +19,7 @@ export default class NewDeck extends Component {
 
 	render(){
 		return (
-			<View style={[MyStyles.background]}>
+			<KeyboardAvoidingView behavior='padding' style={[MyStyles.background]}>
         <Text style={[MyStyles.topInfo]}>Please input…</Text>
         <TextInput
           style = {[MyStyles.textInput]}
@@ -39,7 +45,7 @@ export default class NewDeck extends Component {
   					/>
   				</TouchableHighlight>
         </View>
-			</View>
+			</KeyboardAvoidingView>
 		)
 	}
 }

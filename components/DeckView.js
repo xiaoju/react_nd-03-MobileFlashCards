@@ -21,9 +21,14 @@ export default class DeckView extends Component {
           <Text
             style={{fontSize: 40, fontWeight: 'bold'}}
             >{this.state.thisDeck.key}</Text>
-  				<Text
-            style={{fontSize: 30}}
-            >{this.state.thisDeck.questions.length} cards</Text>
+          { this.state.thisDeck.questions.length === 0
+            ? <Text style={{fontSize: 30}}>Empty deck</Text>
+            :
+              this.state.thisDeck.questions.length === 1
+              ? <Text style={{fontSize: 30}}>1 card</Text>
+              : <Text style={{fontSize: 30}}>{this.state.thisDeck.questions.length} cards</Text> }
+          <Text style={[MyStyles.smallText]}>Press + to add cards.</Text>
+          <Text style={[MyStyles.smallText]}>Press the flag to start this quiz.</Text>
         </View>
 
         <View style={[MyStyles.iconsBar]}>

@@ -27,7 +27,7 @@ export default class Quiz extends Component {
           </View>
           :
           <View style={[MyStyles.infoView]}>
-            <Text style={[MyStyles.text]}>Quiz is complete!</Text>
+            <Text style={[MyStyles.text]}>Complete!</Text>
             <Text style={[MyStyles.text]}>Your score:</Text>
             <Text style={[MyStyles.text]}>
               {Math.round(this.state.correctCount / this.state.thisDeck.questions.length * 100)}%

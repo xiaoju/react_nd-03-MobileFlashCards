@@ -50,8 +50,8 @@ export default class DecksListItem extends React.Component {
               ? <SLength>Empty deck</SLength>
               :
                 this.state.thisDeck.questions.length === 1
-                ? <SLength>1 question</SLength>
-                : <SLength>{this.state.thisDeck.questions.length} questions</SLength>
+                ? <SLength>1 card</SLength>
+                : <SLength>{this.state.thisDeck.questions.length} cards</SLength>
             }
           </View>
 

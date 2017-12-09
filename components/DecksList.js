@@ -23,8 +23,8 @@ export default class DecksList extends Component {
 
 				{ Object.keys(this.state.allDecks).length === 0 &&
 					<View style={[MyStyles.infoView]}>
-						<Text style={[MyStyles.warningText]}>Press the + button to create new decks.</Text>
-						<Text style={[MyStyles.warningText]}>BEWARE! The bomb button will DELETE ALL YOUR DECKS!</Text>
+						<Text style={[MyStyles.smallText]}>Press the + button to create new decks.</Text>
+						<Text style={[MyStyles.smallText]}>BEWARE! The bomb button will DELETE ALL YOUR DECKS!</Text>
 					</View>
 				}
 

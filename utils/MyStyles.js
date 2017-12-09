@@ -24,6 +24,7 @@ export const MyStyles = StyleSheet.create({
   smallText: {
     fontSize: 20,
     color: secondaryTextColor,
+		textAlign: 'center',
   },
   button: {
     color: 'red',
@@ -42,7 +43,7 @@ export const MyStyles = StyleSheet.create({
 	infoView: {
 		backgroundColor: primaryDarkColor,
 		flex: 1,
-		justifyContent: 'center',
+		justifyContent: 'space-around',
 		alignItems: 'center',
 		padding: 20,
 		margin: 30,
@@ -54,11 +55,6 @@ export const MyStyles = StyleSheet.create({
 		fontWeight: 'bold',
 		padding: 10,
 		margin: 10,
-	},
-	warningText: {
-		fontSize: 30,
-		fontWeight: 'bold',
-		color: primaryTextColor,
 	},
 	iconsBar: {
 		flex: 1,
