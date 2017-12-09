@@ -47,9 +47,11 @@ export default class NewDeck extends Component {
 								{
 									this.state.question.length > 0 &&
 									this.state.answer.length > 0 &&
-									addCardToDeck(this.props.navigation.state.params.deckTitle,{question: this.state.question, answer: this.state.answer})
-									alert('Question added!')
-									this.props.navigation.goBack(null)
+									addCardToDeck(
+										this.props.navigation.state.params.deckTitle,
+										{question: this.state.question, answer: this.state.answer})
+									.then(()=>alert('Question added!'))
+									.then(()=>this.props.navigation.goBack(null))
 								}
 							}
 							size={40}
