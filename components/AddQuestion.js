@@ -50,8 +50,10 @@ export default class NewDeck extends Component {
 									addCardToDeck(
 										this.props.navigation.state.params.deckTitle,
 										{question: this.state.question, answer: this.state.answer})
-									.then(()=>alert('Question added!'))
-									.then(()=>this.props.navigation.goBack(null))
+									.then( updatedDeck => this.props.navigation.navigate(
+							      'DeckView',
+							      { thisDeck: updatedDeck}
+							    ))
 								}
 							}
 							size={40}

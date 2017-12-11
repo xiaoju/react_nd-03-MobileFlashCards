@@ -40,4 +40,5 @@ export function addCardToDeck(deckTitle, card) {
     .then(res => JSON.parse(res))
     .then(res => {res[deckTitle].questions.push(card); return res})
     .then(res => AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(res)) )
+    .then( () => getDeck(deckTitle) )
 }
