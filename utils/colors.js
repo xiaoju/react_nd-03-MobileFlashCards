@@ -1,4 +1,3 @@
-
 // https://material.io/color/#!/?view.left=1&view.right=0&primary.color=E1BEE7&secondary.color=FFCCBC
 
 export const primaryColor = '#e1bee7'
